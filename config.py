@@ -22,7 +22,7 @@ MULTI_CLIENT = False
 SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
 ON_HEROKU = "DYNO" in environ
-URL = environ.get("URL", "")
+URL = environ.get("URL", "https://agnipro.duckdns.org")
 
 
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "0"))
@@ -33,4 +33,4 @@ ADMINS = [
 
 
 DATABASE_URI = environ.get("DATABASE_URI", "mongodb+srv://filetolink:filetolink@cluster0.36zqmtq.mongodb.net/?appName=Cluster0")
-DATABASE_NAME = environ.get("DATABASE_NAME", "")
+DATABASE_NAME = environ.get("DATABASE_NAME", "Cluster0")
