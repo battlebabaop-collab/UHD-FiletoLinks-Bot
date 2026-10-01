@@ -22,7 +22,7 @@ MULTI_CLIENT = False
 SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
 ON_HEROKU = "DYNO" in environ
-URL = environ.get("URL", "https://agnipro.duckdns.org/")
+URL = environ.get("URL", "https://agnipro.duckdns.org:8443/")
 
 
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1001732233845"))
