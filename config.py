@@ -25,7 +25,7 @@ ON_HEROKU = "DYNO" in environ
 URL = environ.get("URL", "https://agnipro.duckdns.org")
 
 
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "0"))
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1001732233845"))
 ADMINS = [
     int(admin) if id_pattern.match(admin) else admin
     for admin in environ.get("ADMINS", "770434685").split()
