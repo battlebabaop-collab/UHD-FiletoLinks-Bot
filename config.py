@@ -32,5 +32,5 @@ ADMINS = [
 ]
 
 
-DATABASE_URI = environ.get("DATABASE_URI", "")
+DATABASE_URI = environ.get("DATABASE_URI", "mongodb+srv://filetolink:filetolink@cluster0.36zqmtq.mongodb.net/?appName=Cluster0")
 DATABASE_NAME = environ.get("DATABASE_NAME", "")
