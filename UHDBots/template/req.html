@@ -2,61 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>UHD Bots | Premium Stream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Watch {{file_name}} - PikaShow</title>
     <link rel="icon" type="image/png" href="https://i.postimg.cc/Hkwyv5m9/upscalemedia-transformed.png">
     <link rel="apple-touch-icon" href="https://i.postimg.cc/Hkwyv5m9/upscalemedia-transformed.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Tailwind CSS & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root{--accent:#00f2ff;--secondary:#7000ff;--glass:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.1)}*{margin:0;padding:0;box-sizing:border-box}body{background:#020205;color:#fff;font-family:Outfit,sans-serif;overflow-x:hidden;min-height:100vh}#canvas-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;opacity:.5}nav{padding:15px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(15px);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border)}.logo{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(to right,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.main-wrapper{max-width:1100px;margin:30px auto;padding:0 15px;animation:fadeInUp .8s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.video-card{background:var(--glass);border:1px solid var(--border);border-radius:24px;overflow:hidden;backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,0.7);min-height:200px}video{width:100%;display:block;aspect-ratio:16/9;background:#000;outline:0}.info-panel{padding:25px}.status-tag{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(45deg,var(--secondary),var(--accent));padding:5px 12px;border-radius:50px;font-size:11px;font-weight:800;margin-bottom:12px;text-transform:uppercase}.movie-title{font-size:1.6rem;margin-bottom:20px;font-weight:700;letter-spacing:-.5px;word-break:break-word}.action-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:25px}.btn-uhd{background:var(--glass);border:1px solid var(--border);color:#fff;padding:15px;border-radius:15px;text-align:center;text-decoration:none;font-weight:600;transition:.3s;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}.btn-uhd:hover{background:rgba(255,255,255,0.1);border-color:#fff;transform:translateY(-3px)}.btn-primary{background:#fff;color:#000;border:none}.btn-primary:hover{background:var(--accent);color:#000;box-shadow:0 0 20px rgba(0,242,255,0.4)}.bots-intro-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:20px;padding:20px;margin-top:20px;text-align:center}.bots-intro-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;color:var(--accent);margin-bottom:10px;font-weight:700}.bots-intro-text{font-size:.85rem;color:#aaa;margin-bottom:15px;line-height:1.5}.bots-btn-group{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn-mini{background:var(--glass);border:1px solid var(--border);color:#fff;padding:10px;border-radius:10px;font-size:12px;text-decoration:none;transition:.3s}.btn-mini:hover{border-color:var(--accent);background:rgba(0,242,255,0.1)}.app-section{background:rgba(255,255,255,0.02);padding:15px;border-radius:18px;border:1px solid var(--border)}.app-list{display:flex;gap:10px;overflow-x:auto;padding:5px 0}.app-list::-webkit-scrollbar{display:none}.app-item{min-width:100px;background:var(--glass);padding:10px;border-radius:12px;text-align:center;font-size:12px;border:1px solid var(--border);cursor:pointer}.app-item:hover{border-color:var(--accent)}.tg-join{margin-top:30px;background:linear-gradient(135deg,rgba(36,161,222,0.1),transparent);border:1px solid rgba(36,161,222,0.2);border-radius:20px;padding:30px;text-align:center}.tg-link{color:#24A1DE;font-weight:800;text-decoration:none;font-size:1.2rem;display:block;margin-top:10px}@media (max-width:600px){.movie-title{font-size:1.3rem}.action-row{grid-template-columns:1fr 1fr}.full-mobile{grid-column:span 2}.bots-btn-group{grid-template-columns:1fr}}
+        body { font-family: 'Inter', sans-serif; background-color: #0d0d12; color: #E5E5E5; margin: 0; overflow-x: hidden; }
+        .neon-blue-outline { color: transparent; -webkit-text-stroke: 1px #00b4d8; }
+        .neon-green-outline { color: transparent; -webkit-text-stroke: 1px #ccff00; }
+        
+        /* PikaShow Glowing Background */
+        .glowing-orb-1 { position: fixed; width: 300px; height: 300px; background: radial-gradient(circle, rgba(204,255,0,0.15) 0%, rgba(0,0,0,0) 70%); top: -50px; left: -50px; border-radius: 50%; pointer-events: none; z-index: 0; }
+        .glowing-orb-2 { position: fixed; width: 250px; height: 250px; background: radial-gradient(circle, rgba(0,180,216,0.15) 0%, rgba(0,0,0,0) 70%); bottom: -50px; right: -50px; border-radius: 50%; pointer-events: none; z-index: 0; }
+        
+        /* Video Container Styling */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 16px; border: 1px solid rgba(204,255,0,0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.7); z-index: 10; }
+        .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; outline: none; }
     </style>
 </head>
-<body>
-    <div id="canvas-container"></div>
-    <nav><div class="logo nav-logo">UHD BOTS</div><a href="https://t.me/UHDBots" style="color:var(--accent);text-decoration:none"><i class="fab fa-telegram"></i></a></nav>
-    <div class="main-wrapper">
-        <div class="video-card">
-            <video id="main-player" controls poster="https://i.postimg.cc/Hkwyv5m9/upscalemedia-transformed.png" preload="metadata">
-                <source src="{{file_url}}" type="video/mp4">
-            </video>
-            <div class="info-panel">
-                <div class="status-tag"><i class="fas fa-check-circle"></i> Google Native Engine</div>
-                <h1 class="movie-title" id="clean-title">{{file_name}}</h1>
-                <div class="action-row">
-                    <div class="btn-uhd btn-primary full-mobile" onclick="_0x5a1b('dl')"><i class="fas fa-download"></i> Direct Download</div>
-                    <div class="btn-uhd" onclick="_0x5a1b('cp')"><i class="fas fa-link"></i> Copy</div>
-                    <div class="btn-uhd" onclick="_0x5a1b('sh')"><i class="fas fa-share-alt"></i> Share</div>
-                </div>
-                <div class="app-section">
-                    <p style="font-size:11px;opacity:0.6;margin-bottom:10px">FAST PLAY IN EXTERNAL APPS</p>
-                    <div class="app-list">
-                        <div class="app-item" onclick="_0x2b1c('vlc')"><i class="fas fa-play"></i><br>VLC</div>
-                        <div class="app-item" onclick="_0x2b1c('mx')"><i class="fas fa-play"></i><br>MX Player</div>
-                        <div class="app-item" onclick="_0x2b1c('playit')"><i class="fas fa-play"></i><br>PlayIt</div>
-                        <div class="app-item" onclick="_0x2b1c('km')"><i class="fas fa-play"></i><br>KM Player</div>
-                    </div>
-                </div>
-                <div class="bots-intro-card">
-                    <div class="bots-intro-title"><i class="fas fa-robot"></i> UHD BOTS ECOSYSTEM</div>
-                    <p class="bots-intro-text">Professional high-speed streaming and file management ecosystem.</p>
-                    <div class="bots-btn-group">
-                        <a href="https://t.me/UHDBots" class="btn-mini"><i class="fab fa-telegram-plane"></i> Updates Channel</a>
-                        <a href="https://bit.ly/4dCws8h" class="btn-mini"><i class="fas fa-globe"></i> Visit Bots Site</a>
-                    </div>
-                </div>
+<body class="min-h-screen flex flex-col relative">
+    
+    <!-- Background Glow -->
+    <div class="glowing-orb-1"></div>
+    <div class="glowing-orb-2"></div>
+
+    <!-- PikaShow Header -->
+    <header class="w-full bg-[#0a0a0f]/95 backdrop-blur-md border-b border-gray-800 py-3 px-4 flex justify-center items-center z-50 sticky top-0 shadow-lg">
+        <div class="flex items-center cursor-pointer">
+            <i class="fa-solid fa-circle-play text-[#ccff00] text-[22px] mr-1.5 drop-shadow-[0_0_8px_rgba(204,255,0,0.8)]"></i>
+            <div class="font-black text-[24px] tracking-widest leading-none mt-1" style="font-family: 'Comic Sans MS', cursive, sans-serif;">
+                <span class="neon-blue-outline">PIKA</span><span class="neon-green-outline ml-[1px]">SHOW</span>
             </div>
         </div>
-        <div class="tg-join"><p style="opacity:0.7;font-size:14px">Powered By</p><a href="https://t.me/UHDBots" class="tg-link footer-logo">UHD Bots</a></div>
-    </div>
+    </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-3xl mx-auto p-4 md:p-6 z-10 flex flex-col mt-2">
+        
+        <!-- Video Player -->
+        <div class="video-container mb-6">
+            <video id="main-player" controls preload="metadata" poster="https://i.postimg.cc/Hkwyv5m9/upscalemedia-transformed.png">
+                <source src="{{file_url}}" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Details Panel -->
+        <div class="bg-[#111]/90 backdrop-blur-sm border border-gray-800 rounded-2xl p-5 shadow-2xl relative overflow-hidden">
+            <!-- Top Gradient Line -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00b4d8] to-[#ccff00]"></div>
+            
+            <!-- Badges -->
+            <div class="flex items-center gap-2 mb-3 mt-1">
+                <span class="bg-[#ccff00] text-black px-2.5 py-1 rounded text-[10px] font-black tracking-widest uppercase shadow-[0_0_10px_rgba(204,255,0,0.4)]"><i class="fa-solid fa-bolt text-[9px] mr-1"></i> Fast Stream</span>
+                <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-2 py-1 rounded text-[10px] font-black uppercase tracking-widest">Premium</span>
+            </div>
+
+            <!-- Cleaned Title -->
+            <h1 id="clean-title" class="text-[18px] md:text-[22px] font-black text-white leading-tight mb-6 tracking-wide break-words">
+                {{file_name}}
+            </h1>
+
+            <!-- Direct Download Button -->
+            <div class="grid grid-cols-1 gap-3">
+                <button onclick="downloadAction()" class="w-full bg-[#ccff00] hover:bg-yellow-400 text-black font-black text-[14px] uppercase tracking-widest py-3.5 rounded-xl shadow-[0_0_20px_rgba(204,255,0,0.3)] transition-all flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-download text-lg"></i> Direct Download
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Core Scripts (Rewritten without Malicious Code) -->
     <script>
-        /* NOTICE: THIS CODE IS PROTECTED BY UHD BOTS SECURITY. 
-           UNAUTHORIZED TAMPERING WILL RESULT IN SYSTEM FAILURE.
-        */
-        const _0xurl = "{{file_url}}";
-        (function(_0x1,_0x2){const _0x3=function(_0x4){while(--_0x4){_0x1['push'](_0x1['shift']());}};_0x3(++_0x2);}(_0x4a1b,0x1f4));function _0x2c1a(_0x1,_0x2){const _0x3=_0x4a1b();return _0x2c1a=function(_0x4,_0x5){_0x4=_0x4-0x0;let _0x6=_0x3[_0x4];return _0x6;},_0x2c1a(_0x1,_0x2);}function _0x4a1b(){const _0x1=['\x69\x6e\x6e\x65\x72\x54\x65\x78\x74','\x55\x48\x44\x20\x42\x4f\x54\x53','\x2e\x6e\x61\x76\x2d\x6c\x6f\x67\x6f','\x2e\x66\x6f\x6f\x74\x65\x72\x2d\x6c\x6f\x67\x6f','\x75\x68\x64\x62\x6f\x74\x73','\x6c\x6f\x63\x61\x74\x69\x6f\x6e','\x68\x72\x65\x66','\x62\x6f\x64\x79','\x69\x6e\x6e\x65\x72\x48\x54\x4d\x4c','\x64\x65\x62\x75\x67\x67\x65\x72'];return _0x1;}const _0x5f2e=setInterval(function(){const _0x1=document['querySelector'](_0x2c1a('0x2')),_0x2=document['querySelector'](_0x2c1a('0x3')),_0x3=document['querySelectorAll']('a');let _0x4=![];_0x3['forEach'](_0x5=>{if(_0x5[_0x2c1a('0x6')]['toLowerCase']()['includes'](_0x2c1a('0x4')))_0x4=!![];});if(!_0x1||_0x1[_0x2c1a('0x0')]!==_0x2c1a('0x1')||!_0x2||!_0x4){document[_0x2c1a('0x7')][_0x2c1a('0x8')]='\x3c\x64\x69\x76\x20\x73\x74\x79\x6c\x65\x3d\x22\x62\x61\x63\x6b\x67\x72\x6f\x75\x6e\x64\x3a\x23\x30\x30\x30\x3b\x63\x6f\x6c\x6f\x72\x3a\x72\x65\x64\x3b\x68\x65\x69\x67\x68\x74\x3a\x31\x30\x30\x76\x68\x3b\x64\x69\x73\x70\x6c\x61\x79\x3a\x66\x6c\x65\x78\x3b\x61\x6c\x69\x67\x6e\x2d\x69\x74\x65\x6d\x73\x3a\x63\x65\x6e\x74\x65\x72\x3b\x6a\x75\x73\x74\x69\x66\x79\x2d\x63\x6f\x6e\x74\x65\x6e\x74\x3a\x63\x65\x6e\x74\x65\x72\x3b\x22\x3e\x3c\x68\x31\x3e\x53\x59\x53\x54\x45\x4d\x20\x43\x52\x41\x53\x48\x45\x44\x3a\x20\x54\x41\x4d\x50\x45\x52\x49\x4e\x47\x20\x44\x45\x54\x45\x43\x54\x45\x44\x3c\x2f\x68\x31\x3e\x3c\x2f\x64\x69\x76\x3e';setInterval(()=>{eval(_0x2c1a('0x9'));},0x32);}},0xbb8);const _0x1a2b=new THREE['Scene'](),_0x2b3c=new THREE['PerspectiveCamera'](0x4b,window['innerWidth']/window['innerHeight'],0.1,0x3e8),_0x3c4d=new THREE['WebGLRenderer']({'antialias':!![],'alpha':!![]});_0x3c4d['setSize'](window['innerWidth'],window['innerHeight']);document['getElementById']('canvas-container')['appendChild'](_0x3c4d['domElement']);const _0x4d5e=new THREE['Mesh'](new THREE['IcosahedronGeometry'](0xf,0x1),new THREE['MeshBasicMaterial']({'color':0x7000ff,'wireframe':!![],'transparent':!![],'opacity':0.2}));_0x1a2b['add'](_0x4d5e);_0x2b3c['position']['z']=0x1e;function animate(){requestAnimationFrame(animate);_0x4d5e['rotation']['y']+=0.002;_0x4d5e['rotation']['x']+=0.001;_0x3c4d['render'](_0x1a2b,_0x2b3c);}animate();const _0x6a7b=document['getElementById']('clean-title');if(_0x6a7b){_0x6a7b['innerText']=_0x6a7b['innerText']['replace'](/[._\-+]/g,'\x20')['replace'](/\[.*?\]/g,'')['replace'](/\(.*?\)/g,'')['trim']();}const _0x7b8c=document['getElementById']('main-player');if(_0x7b8c){let _0x8c9d=setTimeout(()=>{if(_0x7b8c['readyState']<0x3&&!_0x7b8c['paused'])_0x9d0e();},0x2710);_0x7b8c['onplaying']=()=>clearTimeout(_0x8c9d);_0x7b8c['onerror']=()=>{clearTimeout(_0x8c9d);_0x9d0e();};function _0x9d0e(){if(!navigator['onLine']){alert('Check Internet!');return;}_0x7b8c['style']['display']='none';const _0x1=document['createElement']('div');_0x1['innerHTML']='\x3c\x64\x69\x76\x20\x73\x74\x79\x6c\x65\x3d\x22\x70\x61\x64\x64\x69\x6e\x67\x3a\x34\x30\x70\x78\x20\x32\x30\x70\x78\x3b\x74\x65\x78\x74\x2d\x61\x6c\x69\x67\x6e\x3a\x63\x65\x6e\x74\x65\x72\x3b\x62\x61\x63\x6b\x67\x72\x6f\x75\x6e\x64\x3a\x72\x67\x62\x61\x28\x32\x35\x35\x2c\x30\x2c\x30\x2c\x30\x2e\x31\x35\x29\x3b\x62\x6f\x72\x64\x65\x72\x3a\x32\x70\x78\x20\x64\x61\x73\x68\x65\x64\x20\x23\x66\x66\x30\x30\x34\x34\x3b\x62\x6f\x72\x64\x65\x72\x2d\x72\x61\x64\x69\x75\x73\x3a\x31\x35\x70\x78\x3b\x6d\x61\x72\x67\x69\x6e\x3a\x31\x30\x70\x78\x3b\x22\x3e\x3c\x69\x20\x63\x6c\x61\x73\x73\x3d\x22\x66\x61\x73\x20\x66\x61\x2d\x65\x78\x63\x6c\x61\x6d\x61\x74\x69\x6f\x6e\x2d\x74\x72\x69\x61\x6e\x67\x6c\x65\x22\x20\x73\x74\x79\x6c\x65\x3d\x22\x66\x6f\x6e\x74\x2d\x73\x69\x7a\x65\x3a\x34\x30\x70\x78\x3b\x63\x6f\x6c\x6f\x72\x3a\x23\x66\x66\x30\x30\x34\x34\x3b\x6d\x61\x72\x67\x69\x6e\x2d\x62\x6f\x74\x74\x6f\x6d\x3a\x31\x35\x70\x78\x3b\x22\x3e\x3c\x2f\x69\x3e\x3c\x68\x32\x3e\x50\x6c\x61\x79\x62\x61\x63\x6b\x20\x49\x73\x73\x75\x65\x21\x3c\x2f\x68\x32\x3e\x3c\x70\x3e\x53\x6c\x6f\x77\x20\x4e\x65\x74\x20\x6f\x72\x20\x55\x6e\x73\x75\x70\x70\x6f\x72\x74\x65\x64\x20\x46\x6f\x72\x6d\x61\x74\x2e\x3c\x2f\x70\x3e\x3c\x64\x69\x76\x20\x73\x74\x79\x6c\x65\x3d\x22\x64\x69\x73\x70\x6c\x61\x79\x3a\x66\x6c\x65\x78\x3b\x67\x61\x70\x3a\x31\x30\x70\x78\x3b\x6a\x75\x73\x74\x69\x66\x79\x2d\x63\x6f\x6e\x74\x65\x6e\x74\x3a\x63\x65\x6e\x74\x65\x72\x3b\x22\x3e\x3c\x62\x75\x74\x74\x6f\x6e\x20\x6f\x6e\x63\x6c\x69\x63\x6b\x3d\x22\x6c\x6f\x63\x61\x74\x69\x6f\x6e\x2e\x72\x65\x6c\x6f\x61\x64\x28\x29\x22\x20\x73\x74\x79\x6c\x65\x3d\x22\x62\x61\x63\x6b\x67\x72\x6f\x75\x6e\x64\x3a\x23\x66\x66\x66\x3b\x63\x6f\x6c\x6f\x72\x3a\x23\x30\x30\x30\x3b\x62\x6f\x72\x64\x65\x72\x3a\x6e\x6f\x6e\x65\x3b\x70\x61\x64\x64\x69\x6e\x67\x3a\x31\x30\x70\x78\x20\x32\x30\x70\x78\x3b\x62\x6f\x72\x64\x65\x72\x2d\x72\x61\x64\x69\x75\x73\x3a\x31\x30\x70\x78\x3b\x66\x6f\x6e\x74\x2d\x77\x65\x69\x67\x68\x74\x3a\x62\x6f\x6c\x64\x3b\x63\x75\x72\x73\x6f\x72\x3a\x70\x6f\x69\x6e\x74\x65\x72\x3b\x22\x3e\x52\x65\x74\x72\x79\x3c\x2f\x62\x75\x74\x74\x6f\x6e\x3e\x3c\x2f\x64\x69\x76\x3e\x3c\x2f\x64\x69\x76\x3e';_0x7b8c['parentNode']['insertBefore'](_0x1,_0x7b8c);}_0x7b8c['onloadedmetadata']=function(){if(_0x7b8c['canPlayType']('audio/mp4; codecs="ec-3"')===''&&_0xurl['toLowerCase']()['includes']('.mkv'))_0xa1b2();};}function _0xa1b2(){if(document['getElementById']('audio-pop'))return;const _0x1=document['createElement']('div');_0x1['id']='audio-pop';_0x1['innerHTML']='\x3c\x64\x69\x76\x20\x73\x74\x79\x6c\x65\x3d\x22\x70\x6f\x73\x69\x74\x69\x6f\x6e\x3a\x66\x69\x78\x65\x64\x3b\x62\x6f\x74\x74\x6f\x6d\x3a\x32\x30\x70\x78\x3b\x6c\x65\x66\x74\x3a\x35\x30\x25\x3b\x74\x72\x61\x6e\x73\x66\x6f\x72\x6d\x3a\x74\x72\x61\x6e\x73\x6c\x61\x74\x65\x58\x28\x2d\x35\x30\x25\x29\x3b\x62\x61\x63\x6b\x67\x72\x6f\x75\x6e\x64\x3a\x72\x67\x62\x61\x28\x31\x31\x32\x2c\x30\x2c\x32\x35\x35\x2c\x30\x2e\x39\x38\x29\x3b\x63\x6f\x6c\x6f\x72\x3a\x77\x68\x69\x74\x65\x3b\x70\x61\x64\x64\x69\x6e\x67\x3a\x31\x35\x70\x78\x20\x32\x30\x70\x78\x3b\x62\x6f\x72\x64\x65\x72\x2d\x72\x61\x64\x69\x75\x73\x3a\x31\x32\x70\x78\x3b\x7a\x2d\x69\x6e\x64\x65\x78\x3a\x39\x39\x39\x39\x3b\x77\x69\x64\x74\x68\x3a\x39\x30\x25\x3b\x6d\x61\x74\x68\x2d\x77\x69\x64\x74\x68\x3a\x33\x35\x30\x70\x78\x3b\x62\x6f\x72\x64\x65\x72\x3a\x31\x70\x78\x20\x73\x6f\x6c\x69\x64\x20\x23\x30\x30\x66\x32\x66\x66\x3b\x64\x69\x73\x70\x6c\x61\x79\x3a\x66\x6c\x65\x78\x3b\x61\x6c\x69\x67\x6e\x2d\x69\x74\x65\x6d\x73\x3a\x63\x65\x6e\x74\x65\x72\x3b\x67\x61\x70\x3a\x31\x30\x70\x78\x3b\x22\x3e\x3c\x69\x20\x63\x6c\x61\x73\x73\x3d\x22\x66\x61\x20\x66\x61\x2d\x76\x6f\x6c\x75\x6d\x65\x2d\x6d\x75\x74\x65\x22\x3e\x3c\x2f\x69\x3e\x3c\x64\x69\x76\x20\x73\x74\x79\x6c\x65\x3d\x22\x66\x6c\x65\x78\x3a\x31\x3b\x66\x6f\x6e\x74\x2d\x73\x69\x7a\x65\x3a\x31\x31\x70\x78\x3b\x22\x3e\x4e\x6f\x20\x53\x6f\x75\x6e\x64\x3f\x20\x55\x73\x65\x20\x45\x78\x74\x65\x72\x6e\x61\x6c\x20\x50\x6c\x61\x79\x65\x72\x20\x66\x6f\x72\x20\x44\x54\x53\x2f\x41\x43\x33\x2e\x3c\x2f\x64\x69\x76\x3e\x3c\x2f\x64\x69\x76\x3e';document['body']['appendChild'](_0x1);}function _0x5a1b(_0x1){if(_0x1==='dl')window['location']['href']=window['location']['href']['replace']('/watch/','/dl/');else if(_0x1==='cp'){navigator['clipboard']['writeText'](window['location']['href']);alert('Link Copied!');}else if(_0x1==='sh'){const _0x2={'title':'UHD Bots','text':'Stream Movie on UHD Bots!','url':window['location']['href']};if(navigator['share']&&navigator['canShare']&&navigator['canShare'](_0x2))navigator['share'](_0x2);else{navigator['clipboard']['writeText'](window['location']['href']);alert('Link Copied!');}}}function _0x2b1c(_0x1){if(!_0xurl||_0xurl['includes']('{'))return;const _0x2=document['getElementById']('clean-title')['innerText'],_0x3=encodeURIComponent(_0x2),_0x4=_0xurl['replace'](/^https?:\/\//,'');let _0x5=_0x1==='vlc'?'org.videolan.vlc':_0x1==='mx'?'com.mxtech.videoplayer.ad':_0x1==='playit'?'com.playit.videoplayer':'com.kmplayer';let _0x6=`intent://${_0x4}#Intent;scheme=https;package=${_0x5};action=android.intent.action.VIEW;type=video/*;S.title=${_0x3};end`;const _0x7=Date['now']();window['location']['assign'](_0x6);setTimeout(()=>{if(Date['now']()-_0x7<2000)if(confirm('App not found. Go to Play Store?'))window['location']['href']=`https://play.google.com/store/apps/details?id=${_0x5}`;},1500);}window['addEventListener']('resize',()=>{_0x3c4d['setSize'](window['innerWidth'],window['innerHeight']);_0x2b3c['aspect']=window['innerWidth']/window['innerHeight'];_0x2b3c['updateProjectionMatrix']();});
+        const fileUrl = "{{file_url}}";
+
+        // 1. Clean File Name (Removes dots, dashes, brackets)
+        const titleEl = document.getElementById('clean-title');
+        if (titleEl) {
+            titleEl.innerText = titleEl.innerText
+                .replace(/[._\-+]/g, ' ')
+                .replace(/\[.*?\]/g, '')
+                .replace(/\(.*?\)/g, '')
+                .trim();
+        }
+
+        // 2. Video Player Error Handling & Timeout Validation
+        const player = document.getElementById('main-player');
+        if (player) {
+            let bufferTimeout = setTimeout(() => {
+                if (player.readyState < 3 && !player.paused) triggerError();
+            }, 10000); // 10 seconds check
+
+            player.onplaying = () => clearTimeout(bufferTimeout);
+            player.onerror = () => { clearTimeout(bufferTimeout); triggerError(); };
+
+            function triggerError() {
+                if (!navigator.onLine) { alert('Please check your Internet Connection!'); return; }
+                
+                player.style.display = 'none';
+                const errDiv = document.createElement('div');
+                errDiv.className = 'absolute inset-0 flex flex-col items-center justify-center bg-[#111] border-2 border-dashed border-red-500/60 rounded-xl p-4 text-center';
+                errDiv.innerHTML = `
+                    <i class="fa-solid fa-triangle-exclamation text-red-500 text-4xl mb-3 drop-shadow-[0_0_10px_rgba(220,38,38,0.6)]"></i>
+                    <h2 class="text-white font-bold text-[16px] mb-1 tracking-wide">Playback Issue</h2>
+                    <p class="text-gray-400 text-[11px] mb-4">Slow network or unsupported video format.</p>
+                    <button onclick="location.reload()" class="bg-white text-black px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-gray-200 transition shadow-md">Retry</button>
+                `;
+                player.parentNode.appendChild(errDiv);
+            }
+
+            // AC3/DTS Audio Check (Shows Warning if Audio codec is missing)
+            player.onloadedmetadata = function() {
+                if(player.canPlayType('audio/mp4; codecs="ec-3"') === '' && fileUrl.toLowerCase().includes('.mkv')) {
+                    showAudioWarning();
+                }
+            };
+        }
+
+        // 3. Audio Warning UI (PikaShow Style)
+        function showAudioWarning() {
+            if(document.getElementById('audio-pop')) return;
+            const pop = document.createElement('div');
+            pop.id = 'audio-pop';
+            pop.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 w-[90%] max-w-[350px] bg-[#0a0a0f]/95 border border-[#00b4d8] text-white p-3.5 rounded-xl z-50 flex items-center gap-3 shadow-[0_0_20px_rgba(0,180,216,0.3)] backdrop-blur-md';
+            pop.innerHTML = `
+                <div class="bg-red-500/20 w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-red-500/50">
+                    <i class="fa-solid fa-volume-xmark text-red-500 text-sm"></i>
+                </div>
+                <div class="flex-1 text-[11px] font-medium leading-tight">Video might have no sound (AC3/DTS format). Download file to watch with audio.</div>
+                <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-white shrink-0 p-1"><i class="fa-solid fa-times text-lg"></i></button>
+            `;
+            document.body.appendChild(pop);
+        }
+
+        // 4. Download Action Function
+        function downloadAction() {
+            // Replaces /watch/ with /dl/ as per original code logic
+            let currentUrl = window.location.href;
+            if(currentUrl.includes('/watch/')) {
+                window.location.href = currentUrl.replace('/watch/', '/dl/');
+            } else {
+                window.open(fileUrl, '_blank');
+            }
+        }
     </script>
 </body>
 </html>
