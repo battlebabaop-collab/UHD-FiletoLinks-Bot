@@ -12,8 +12,8 @@ id_pattern = re.compile(r'^-?\d+$')
 
 
 SESSION = environ.get("SESSION", "UHDFiletoLinksBot")
-API_ID = int(environ.get("API_ID", "0"))
-API_HASH = environ.get("API_HASH", "")
+API_ID = int(environ.get("API_ID", "12850056"))
+API_HASH = environ.get("API_HASH", "15564ec4a1a2cbef87c99a9aa9e40b34")
 BOT_TOKEN = environ.get("BOT_TOKEN", "8840797536:AAEQvXXXXYq6GEj5SKgwc3wQpQILEeHDWv8")
 
 
@@ -28,7 +28,7 @@ URL = environ.get("URL", "")
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "0"))
 ADMINS = [
     int(admin) if id_pattern.match(admin) else admin
-    for admin in environ.get("ADMINS", "").split()
+    for admin in environ.get("ADMINS", "770434685").split()
 ]
 
 
