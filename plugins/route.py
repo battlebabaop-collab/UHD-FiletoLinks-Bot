@@ -50,10 +50,14 @@ async def _0x_sf(_0x_rq, _0x_fid, _0x_hsh):
     _0x_st = _0x_rq.http_range.start or 0
     _0x_en = (_0x_rq.http_range.stop or _0x_fsz) - 1
 
-    # --- ENCRYPTED RENAME & CHUNK LOGIC ---
-    _0x_t = _0x_dec('QFVIREJvdHM=') # @UHDBots
+    # --- ENCRYPTED RENAME & CHUNK LOGIC (UPDATED) ---
     _0x_on = _0x_f.file_name or f"{secrets.token_hex(2)}.bin"
-    _0x_fn = f"[{_0x_t}] {_0x_on.replace('_', ' ').replace('-', ' ')}" if _0x_t not in _0x_on else _0x_on
+    
+    # Regex to remove ANY @username, brackets [], and trailing dashes/spaces
+    _0x_fn = re.sub(r'\[?\s*@\w+\s*\]?\s*[-_]*\s*', '', _0x_on).strip()
+    
+    # Replace remaining underscores and dashes with spaces for a clean name
+    _0x_fn = _0x_fn.replace('_', ' ').replace('-', ' ')
 
     _0x_cs = 1048576 # 1MB Fix
     _0x_os = _0x_st - (_0x_st % _0x_cs)
